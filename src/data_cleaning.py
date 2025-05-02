@@ -31,8 +31,12 @@ def clean_parts_data(filepath):
     # Drop completely empty rows
     df.dropna(how='all', inplace=True)
 
-    # Drop rows missing critical fields
-    df.dropna(subset=["part_number", "quantity_sold"], inplace=True)
+    # ✅ Check for required columns before dropping
+    required_cols = {"part_number", "quantity_sold"}
+    if required_cols.issubset(df.columns):
+        df.dropna(subset=["part_number", "quantity_sold"], inplace=True)
+    else:
+        raise ValueError("❌ The uploaded file is missing required columns: part_number and/or quantity_sold.")
 
     # Convert quantity_sold to numeric
     df["quantity_sold"] = pd.to_numeric(df["quantity_sold"], errors="coerce").fillna(0)
