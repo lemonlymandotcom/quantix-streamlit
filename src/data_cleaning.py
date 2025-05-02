@@ -3,16 +3,21 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning, message="Could not infer format")
 
 import pandas as pd
+from io import StringIO  # ✅ Add this to handle uploaded files in Streamlit
 
 def clean_parts_data(filepath):
     """
     Load and clean parts sales data from a CSV file exported from Tekion.
+    Supports both local file paths and Streamlit file uploads.
     """
     # Load CSV
     if hasattr(filepath, 'read'):
-        df = pd.read_csv(filepath)  # Streamlit file-like object
+        content = filepath.read()
+        if isinstance(content, bytes):
+            content = content.decode("utf-8")
+        df = pd.read_csv(StringIO(content))
     else:
-        df = pd.read_csv(open(filepath, 'r'))  # Local file path
+        df = pd.read_csv(filepath)
 
     # Clean and standardize column names
     df.columns = [col.strip().lower().replace(" ", "_").replace("'", "") for col in df.columns]
