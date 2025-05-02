@@ -9,7 +9,10 @@ def clean_parts_data(filepath):
     Load and clean parts sales data from a CSV file exported from Tekion.
     """
     # Load CSV
-    df = pd.read_csv(filepath)
+    if hasattr(filepath, 'read'):
+        df = pd.read_csv(filepath)  # Streamlit file-like object
+    else:
+        df = pd.read_csv(open(filepath, 'r'))  # Local file path
 
     # Clean and standardize column names
     df.columns = [col.strip().lower().replace(" ", "_").replace("'", "") for col in df.columns]
