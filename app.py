@@ -10,6 +10,7 @@ from src.graph_forecasts import plot_single_forecast
 
 st.set_page_config(page_title="Quantix Forecasting Suite", layout="wide")
 st.title("📦 Quantix Parts Demand Forecasting")
+st.caption("✅ App updated at 10:57 AM")
 
 # Upload section
 uploaded_file = st.file_uploader("📁 Upload your exported Tekion CSV", type=["csv"])
