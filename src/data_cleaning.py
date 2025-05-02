@@ -3,7 +3,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning, message="Could not infer format")
 
 import pandas as pd
-from io import StringIO  # ✅ Add this to handle uploaded files in Streamlit
+from io import StringIO
 
 def clean_parts_data(filepath):
     """
@@ -12,6 +12,7 @@ def clean_parts_data(filepath):
     """
     # Load CSV
     if hasattr(filepath, 'read'):
+        filepath.seek(0)  # ✅ Reset file pointer in case it's already been read
         content = filepath.read()
         if isinstance(content, bytes):
             content = content.decode("utf-8")
