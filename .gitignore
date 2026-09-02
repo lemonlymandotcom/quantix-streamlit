@@ -1,0 +1,36 @@
+# Byte-compiled / optimised files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Generated outputs — forecasts are built in memory, never written to disk,
+# but keep this in case anything is exported locally for inspection.
+outputs/
+
+# Never commit real DMS exports or any customer/sales data
+*.csv
+!requirements*.csv
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local pre-fix backups (Sept 2026 security pass)
+*.bak-presec
