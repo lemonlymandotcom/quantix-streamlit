@@ -1,4 +1,13 @@
-streamlit
-pandas
-scikit-learn
-matplotlib
+# Application dependencies for the Streamlit app (QX-03).
+#
+# NOTE: numpy and scikit-learn are imported directly by src/ modules --
+# they are NOT just transitive deps of pandas/matplotlib, so they belong here.
+#
+# matplotlib and pandas are pinned to the versions in Casey's environment.
+# To pin the rest exactly, run this in the env you deploy from:
+#   python3 -c "import streamlit,sklearn,numpy;print('streamlit==%s\nscikit-learn==%s\nnumpy==%s'%(streamlit.__version__,sklearn.__version__,numpy.__version__))"
+streamlit>=1.40,<2.0
+pandas==2.2.3
+numpy>=1.26,<3.0
+scikit-learn>=1.5,<2.0
+matplotlib==3.9.2
