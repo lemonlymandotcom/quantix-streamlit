@@ -1,7 +1,6 @@
 # Quantix — Parts Demand Forecasting
 
-A Streamlit app that turns a raw dealership DMS export into a next-month parts demand forecast,
-split into what you already stock and what you don't.
+Streamlit forecasting tool for automotive parts demand — cleans DMS exports, forecasts next-month demand with scikit-learn.
 
 Built to solve a problem I had in my own job: as parts manager I was ordering against intuition and
 a spreadsheet, and the parts we ran out of were rarely the ones I expected.
